@@ -45,6 +45,9 @@ class Maze:
     def checkExit(self, posX, posY):
         return self.maze[posX][posY] == 3
 
+    def checkStart(self, posX, posY):
+        return self.maze[posX][posY] == 2
+
     def printMaze(self):
         for i in range(len(self.maze)):
             for j in range(len(self.maze[i])):
