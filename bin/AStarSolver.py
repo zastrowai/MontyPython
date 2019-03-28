@@ -3,27 +3,16 @@ class AStarSolver:
 
     def __init__(self):
         self.mazeP = Maze()
-        self.goalX = [0]
-        self.goalY = [0]
-        self.findEnd(self.goalX, self.goalY)
-        self.startX = [0]
-        self.startY = [0]
-        self.findStart(self.startX,self.startY)
+        self.goal = []
+        self.mazeP.findEnd(self.goal)
+        self.start = []
+        self.mazeP.findStart(self.start)
+        self.h = 0
+        self.f = 0
 
-    def findEnd(self, posX, posY):
-        for i in range(len(self.mazeP.maze)):
-            for j in range(len(self.mazeP.maze[i])):
-                if self.mazeP.checkExit(i, j):
-                    posX[0] = j
-                    posY[0] = i
-                    break
 
-    def findStart(self, posX, posY):
-        for i in range(len(self.mazeP.maze)):
-            for j in range(len(self.mazeP.maze[i])):
-                if self.mazeP.checkStart(i, j):
-                    posX[0] = j
-                    posY[0] = i
-                    break
 
-    ##def heuristic(posX, posY):
+    def heuristic(self, posX, posY):
+        return abs(posX - self.goal[0]) + abs(posY - self.goal[1])
+
+  #  def search(self, maze, start, goal):

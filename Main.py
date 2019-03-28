@@ -2,11 +2,9 @@ from bin.Maze import Maze
 from bin.AStarSolver import AStarSolver
 test = Maze()
 test2 = AStarSolver()
-print(test2.goalX)
-print(test2.goalY)
+print(test2.goal)
 print("\n")
-print(test2.startX)
-print(test2.startY)
+print(test2.start)
 left = [1]
 right = [1]
 

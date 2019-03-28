@@ -57,3 +57,18 @@ class Maze:
     def visited(self, posX, posY):
         self.maze[posX][posY] = 'X'
 
+    def findEnd(self, lst):
+        for i in range(len(self.maze)):
+            for j in range(len(self.maze[i])):
+                if self.checkExit(i, j):
+                    lst.append(j)
+                    lst.append(i)
+                    break
+
+    def findStart(self, lst):
+        for i in range(len(self.maze)):
+            for j in range(len(self.maze[i])):
+                if self.checkStart(i, j):
+                    lst.append(j)
+                    lst.append(i)
+                    break
