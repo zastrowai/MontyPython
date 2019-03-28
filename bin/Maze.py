@@ -19,6 +19,11 @@ class Maze:
                 [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
                 [1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 3],
                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+        self.WALL = 1
+        self.EXIT = 3
+        self.OPEN = 0
+        self.START = 2
+        self.VISITED = 'X'
 
     def moveLeft(self, posX, posY):
         posX[0] = posX[0] - 1
