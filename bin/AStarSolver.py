@@ -25,5 +25,5 @@ class AStarSolver:
                 break
 
             if maze.left(checking.x, checking.y).moveable and maze.left(checking.x, checking.y) not in closed:
-                if checking.left
+                if checking.leftf
 
