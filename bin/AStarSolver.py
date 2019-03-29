@@ -20,10 +20,12 @@ class AStarSolver:
 
         while not opened.empty():
             checking = opened[0]
-
-            if checking.x == goal[0] and checking.y == goal[1]:
+            tempX = checking.x
+            tempY = checking.y
+            if maze.checkExit(checking.x, checking.y):
                 break
-
-            if maze.left(checking.x, checking.y).moveable and maze.left(checking.x, checking.y) not in closed:
-                if checking.leftf
+            maze.moveLeft(tempX,tempY)
+            tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
+            if maze.moveable(tempX, tempY) and tempChecking not in closed:
+                if checking.left
 

@@ -82,3 +82,8 @@ class Maze:
                     lst.append(j)
                     lst.append(i)
                     break
+
+    def moveable(self, posX, posY):
+        if self.checkOpen(posX, posY) or self.checkExit(posX, posY):
+            return True
+        return False
