@@ -1,4 +1,9 @@
 class Maze:
+    WALL = 1
+    EXIT = 3
+    OPEN = 0
+    START = 2
+    VISITED = 'X'
     ## 1 is wall
     ## 0 is path
     ## 2 is start
