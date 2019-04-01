@@ -3,6 +3,11 @@ class Maze:
     ## 0 is path
     ## 2 is start
     ## 3 is goal
+    WALL = 1
+    OPEN = 0
+    START = 2
+    EXIT = 3
+    VISITED = 'X'
     def __init__(self):
         self.width = 12
         self.height = 12
