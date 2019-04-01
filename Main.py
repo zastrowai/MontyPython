@@ -1,14 +1,17 @@
 from bin.Maze import Maze
 from bin.AStarSolver import AStarSolver
 from bin.DfsSolver import DfsSolver
+from bin.GreedySolver import GreedySolver
 test = Maze()
 test2 = AStarSolver()
 test3 = DfsSolver()
+test4 = GreedySolver()
 print(test2.goal)
 print("\n")
-print(test2.start)
-left = [1]
-right = [1]
+
+#print(test2.start)
+#left = [1]
+#right = [1]
 
 # Main Body. Runs through all the algorithms.
 print("Start of DFS Solver")
@@ -20,3 +23,7 @@ test3.solve(test3.start[1], test3.start[0])
 print("Finished Maze:")
 test3.printDfsMaze()
 print("End of DFS Solver\n")
+
+print("Start of Greedy Solver")
+print(test4.goal)
+print("\n")
