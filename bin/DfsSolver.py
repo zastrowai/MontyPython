@@ -3,6 +3,10 @@ class DfsSolver:
     def __init__(self):
         self.mazeDFS = Maze()
         self.free = False
+        self.goal = []
+        self.mazeDFS.findEnd(self.goal)
+        self.start = []
+        self.mazeDFS.findStart(self.start)
 
     def solve(self, y, x):
         if self.mazeDFS.maze[y][x] != Maze.EXIT and self.mazeDFS.maze[y][x] != Maze.START:
@@ -15,32 +19,28 @@ class DfsSolver:
                 return
             if self.mazeDFS.maze[y][x] != Maze.START:
                 self.mazeDFS.maze[y][x] = Maze.VISITED
-            self.printDfsMaze()
-            print("\n")
+            print("[" + str(x) + ", " + str(y) + "]")
             self.solve(y, x - 1)
         if self.mazeDFS.maze[y + 1][x] == Maze.OPEN or self.mazeDFS.maze[y + 1][x] == Maze.EXIT:  # Logic for moving down
             if self.free:
                 return
             if self.mazeDFS.maze[y][x] != Maze.START:
                 self.mazeDFS.maze[y][x] = Maze.VISITED
-            self.printDfsMaze()
-            print("\n")
+            print("[" + str(x) + ", " + str(y) + "]")
             self.solve(y + 1, x)
         if self.mazeDFS.maze[y - 1][x] == Maze.OPEN or self.mazeDFS.maze[y - 1][x] == Maze.EXIT:  # Logic for moving up
             if self.free:
                 return
             if self.mazeDFS.maze[y][x] != Maze.START:
                 self.mazeDFS.maze[y][x] = Maze.VISITED
-            self.printDfsMaze()
-            print("\n")
+            print("[" + str(x) + ", " + str(y) + "]")
             self.solve(y - 1, x)
         if self.mazeDFS.maze[y][x + 1] == Maze.OPEN or self.mazeDFS.maze[y][x + 1] == Maze.EXIT:  # Logic for moving right
             if self.free:
                 return
             if self.mazeDFS.maze[y][x] != Maze.START:
                 self.mazeDFS.maze[y][x] = Maze.VISITED
-            self.printDfsMaze()
-            print("\n")
+            print("[" + str(x) + ", " + str(y) + "]")
             self.solve(y, x + 1)
 
     def printDfsMaze(self):
