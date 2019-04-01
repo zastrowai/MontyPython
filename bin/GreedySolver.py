@@ -24,11 +24,11 @@ class GreedySolver:
         opened.append(MazeInfo(start[1], start[0], 0, self.heuristic(start[0], start[1])))
 
         while len(opened):
-            f = self.LARGE_NUM
+            h = self.LARGE_NUM
             tocheck = -1
             for x in range(len(opened)):
-                if (opened[x].f <= f):
-                    f = opened[x].f
+                if (opened[x].h <= h):
+                    h = opened[x].h
                     tocheck = x
             checking = opened[tocheck]
 
@@ -46,7 +46,7 @@ class GreedySolver:
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
                 if tempChecking in opened:
-                    if tempChecking.h >= checking.h + 1:
+                    if tempChecking.g >= checking.g + 1:
                         for j in range(len(opened)):
                             if opened[j] == tempChecking:
                                 opened[j] = tempChecking
@@ -62,7 +62,7 @@ class GreedySolver:
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
                 if tempChecking in opened:
-                    if tempChecking.h >= checking.h + 1:
+                    if tempChecking.g >= checking.g + 1:
                         for j in range(len(opened)):
                             if opened[j] == tempChecking:
                                 opened[j] = tempChecking
@@ -79,7 +79,7 @@ class GreedySolver:
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
                 if tempChecking in opened:
-                    if tempChecking.h >= checking.h + 1:
+                    if tempChecking.g >= checking.g + 1:
                         for j in range(len(opened)):
                             if opened[j] == tempChecking:
                                 opened[j] = tempChecking
@@ -95,7 +95,7 @@ class GreedySolver:
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
                 if tempChecking in opened:
-                    if tempChecking.h >= checking.h + 1:
+                    if tempChecking.g >= checking.g + 1:
                         for j in range(len(opened)):
                             if opened[j] == tempChecking:
                                 opened[j] = tempChecking
