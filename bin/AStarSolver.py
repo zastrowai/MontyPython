@@ -25,7 +25,7 @@ class AStarSolver:
             f = self.LARGE_NUM
             tocheck = -1
             for x in range(len(opened)):
-                if (opened[x].f < f):
+                if (opened[x].f <= f):
                     f = opened[x].f
                     tocheck = x
             checking = opened[tocheck]
