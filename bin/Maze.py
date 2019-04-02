@@ -74,8 +74,8 @@ class Maze:
         for i in range(len(self.maze)):
             for j in range(len(self.maze[i])):
                 if self.checkStart(i, j):
-                    lst.append(j)
                     lst.append(i)
+                    lst.append(j)
                     break
 
     def moveable(self, posX, posY):

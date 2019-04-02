@@ -19,7 +19,7 @@ class GreedySolver:
     def search(self, maze, start, goal):
         opened = []
         closed = []
-        opened.append(MazeInfo(start[1], start[0], 0, self.heuristic(start[0], start[1])))
+        opened.append(MazeInfo(start[0], start[1], 0, self.heuristic(start[0], start[1])))
 
         while len(opened):
             h = self.LARGE_NUM
