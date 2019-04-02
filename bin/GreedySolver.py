@@ -12,8 +12,6 @@ class GreedySolver:
         self.mazeM.findEnd(self.goal)
         self.start = []
         self.mazeM.findStart(self.start)
-        self.search(self.mazeM, self.start, self.goal)
-        self.mazeM.printMaze()
 
     def heuristic(self, posX, posY):
         return abs(posX - self.goal[0]) + abs(posY - self.goal[1])
@@ -32,14 +30,15 @@ class GreedySolver:
                     tocheck = x
             checking = opened[tocheck]
 
-            maze.printMaze()
+            #maze.printMaze()
             closed.append(checking)
 
             ## go left
             tempX = checking.x
             tempY = checking.y
             if maze.checkExit(checking.x, checking.y):
-                print("gucci gang")
+                print(self.goal)
+                print("Exit Found!\n")
                 return
             maze.maze[checking.y][checking.x] = 'X'
             tempX = tempX - 1
@@ -104,6 +103,6 @@ class GreedySolver:
 
 
             opened.remove(checking)
-            print(checking.x, checking.y)
+            print("[" + str(checking.x) + ", " + str(checking.y) + "]")
 
 
