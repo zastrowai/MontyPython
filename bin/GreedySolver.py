@@ -33,13 +33,14 @@ class GreedySolver:
             #maze.printMaze()
             closed.append(checking)
 
-            ## go left
-            tempX = checking.x
-            tempY = checking.y
             if maze.checkExit(checking.x, checking.y):
                 print(self.goal)
                 print("Exit Found!\n")
                 return
+
+            ## go left
+            tempX = checking.x
+            tempY = checking.y
             maze.maze[checking.y][checking.x] = 'X'
             tempX = tempX - 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
@@ -55,8 +56,6 @@ class GreedySolver:
             ## go down
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
             tempY = tempY + 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
@@ -72,8 +71,6 @@ class GreedySolver:
 
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
             tempX = tempX + 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
@@ -88,8 +85,6 @@ class GreedySolver:
             ## up
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
             tempY = tempY - 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
