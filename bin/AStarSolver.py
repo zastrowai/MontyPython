@@ -1,22 +1,40 @@
+# Project 1
+# Contributors: Logan Garza, Timothy Kempster, Aidan Zastrow
+# A* solver uses the maze class and determines where the start and goal are
+# Uses the goal to find the heuristic value of each cell once it examines a cell
+# Uses the start as the starting location and then looks left, down, right, up
+# Replaces the start and opens spaces with X to show the path that was taken
+# Some open spaces are examined before the goal at the very end of the search
+# As their path cost function is less the goals.
+
 from bin.Maze import Maze
 from bin.MazeInfo import MazeInfo
-class AStarSolver:
 
+
+class AStarSolver:
+    # used to determine the object in opened with the lowest path cost function
     LARGE_NUM = 65234
 
+    # Constructor of A*
+    # initializes goal and start then runs the search and print of the maze
     def __init__(self):
         self.mazeM = Maze()
         self.goal = []
         self.mazeM.findEnd(self.goal)
         self.start = []
         self.mazeM.findStart(self.start)
-        self.search(self.mazeM, self.start, self.goal)
-        self.mazeM.printMaze()
 
+
+    # Finds the heuristic value from the current position to the goal
+    # Returns the heuristic
     def heuristic(self, posX, posY):
         return abs(posX - self.goal[0]) + abs(posY - self.goal[1])
 
-    def search(self, maze, start, goal):
+    # The main body for the A* search
+    # Uses an entered maze and start position
+    # Searches through the maze using A* until it finds the goal
+    # Will print out the path taken as it goes
+    def solve(self, maze, start):
         opened = []
         closed = []
         opened.append(MazeInfo(start[1], start[0], 0, self.heuristic(start[0], start[1])))
@@ -25,20 +43,20 @@ class AStarSolver:
             f = self.LARGE_NUM
             tocheck = -1
             for x in range(len(opened)):
-                if (opened[x].f <= f):
+                if (opened[x].f < f):
                     f = opened[x].f
                     tocheck = x
             checking = opened[tocheck]
 
-            maze.printMaze()
+            print("[", checking.x, ",", checking.y, "]")
             closed.append(checking)
 
             ## go left
             tempX = checking.x
             tempY = checking.y
             if maze.checkExit(checking.x, checking.y):
-                print("gucci gang")
                 return
+
             maze.maze[checking.y][checking.x] = 'X'
             tempX = tempX - 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
@@ -54,8 +72,7 @@ class AStarSolver:
             ## go down
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
+
             tempY = tempY + 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
@@ -71,8 +88,7 @@ class AStarSolver:
 
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
+
             tempX = tempX + 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
@@ -87,8 +103,7 @@ class AStarSolver:
             ## up
             tempX = checking.x
             tempY = checking.y
-            if maze.checkExit(checking.x, checking.y):
-                break
+
             tempY = tempY - 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:
@@ -102,6 +117,5 @@ class AStarSolver:
 
 
             opened.remove(checking)
-            print(checking.x, checking.y)
 
 

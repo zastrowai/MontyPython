@@ -66,8 +66,8 @@ class Maze:
         for i in range(len(self.maze)):
             for j in range(len(self.maze[i])):
                 if self.checkExit(i, j):
-                    lst.append(j)
                     lst.append(i)
+                    lst.append(j)
                     break
 
     def findStart(self, lst):
