@@ -16,14 +16,13 @@ class AStarSolver:
     LARGE_NUM = 65234
 
     # Constructor of A*
-    # initializes goal and start then runs the search and print of the maze
+    # initializes goal and start and a maze to use
     def __init__(self):
         self.mazeM = Maze()
         self.goal = []
         self.mazeM.findEnd(self.goal)
         self.start = []
         self.mazeM.findStart(self.start)
-
 
     # Finds the heuristic value from the current position to the goal
     # Returns the heuristic
@@ -57,7 +56,7 @@ class AStarSolver:
             if maze.checkExit(checking.x, checking.y):
                 return
 
-            maze.maze[checking.y][checking.x] = 'X'
+            maze.visited(checking.y, checking.x)
             tempX = tempX - 1
             tempChecking = MazeInfo(tempX, tempY, checking.g + 1, self.heuristic(tempX, tempY))
             if maze.moveable(tempX, tempY) and tempChecking not in closed:

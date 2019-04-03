@@ -1,3 +1,12 @@
+# Project 1
+# Contributors: Logan Garza, Timothy Kempster, Aidan Zastrow
+# The problem we addressed in our project was the solving a linear maze in an [x,y] plane using python.
+# When traversing in a maze, there are four basic actions you can proceed with at any given point,
+# you can check for a wall and attempt to move: right, up, down, or left.
+# Our project aimed to automate this decision making based on different algorithms and heuristics.
+# We implemented a depth first search algorithm,
+# A star heuristic, and greedy best-first heuristic to address different ways to traverse and
+# solve a maze given that it has one specific entry point and one specific exit/goal point.
 from bin.Maze import Maze
 from bin.AStarSolver import AStarSolver
 from bin.DfsSolver import DfsSolver
